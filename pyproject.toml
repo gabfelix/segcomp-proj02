@@ -1,0 +1,32 @@
+[project]
+name = "proj02"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "librsa",
+]
+
+[project.scripts]
+proj02 = "proj02:main"
+
+[build-system]
+requires = ["uv_build>=0.12.17,<0.13.0"]
+build-backend = "uv_build"
+
+[tool.uv.sources]
+librsa = { workspace = true }
+
+[tool.uv.workspace]
+members = [
+    "librsa",
+]
+
+[tool.pyright]
+venvPath = "."
+venv = ".venv"
+extraPaths = [
+    "librsa/src",
+    "src"
+]

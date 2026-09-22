@@ -1,0 +1,25 @@
+version = 1
+revision = 3
+requires-python = ">=3.14"
+
+[manifest]
+members = [
+    "librsa",
+    "proj02",
+]
+
+[[package]]
+name = "librsa"
+version = "0.1.0"
+source = { editable = "librsa" }
+
+[[package]]
+name = "proj02"
+version = "0.1.0"
+source = { editable = "." }
+dependencies = [
+    { name = "librsa" },
+]
+
+[package.metadata]
+requires-dist = [{ name = "librsa", editable = "librsa" }]
