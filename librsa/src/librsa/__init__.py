@@ -230,3 +230,19 @@ def _get_prime(bits: int, k: int) -> int:
         candidate = _get_odd_candidate(bits)
         if test_primality_miller_rabbin(candidate, k):
             return candidate
+
+
+from librsa.oaep import DecryptionError, max_message_len, oaep_decrypt, oaep_encrypt  # noqa: E402
+from librsa.primitives import mgf1  # noqa: E402
+
+__all__ = [
+    "DecryptionError",
+    "PrivateKey",
+    "PublicKey",
+    "max_message_len",
+    "mgf1",
+    "oaep_decrypt",
+    "oaep_encrypt",
+    "rsa_gen_keys",
+    "test_primality_miller_rabbin",
+]
