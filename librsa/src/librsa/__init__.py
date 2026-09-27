@@ -233,6 +233,12 @@ def _get_prime(bits: int, k: int) -> int:
 
 
 from librsa.oaep import DecryptionError, max_message_len, oaep_decrypt, oaep_encrypt  # noqa: E402
+from librsa.pss import (  # noqa: E402
+    pss_encode_digest,
+    pss_sign_digest,
+    pss_sign_file,
+    sha3_256_file,
+)
 from librsa.primitives import mgf1  # noqa: E402
 
 __all__ = [
@@ -243,6 +249,10 @@ __all__ = [
     "mgf1",
     "oaep_decrypt",
     "oaep_encrypt",
+    "pss_encode_digest",
+    "pss_sign_digest",
+    "pss_sign_file",
     "rsa_gen_keys",
+    "sha3_256_file",
     "test_primality_miller_rabbin",
 ]
