@@ -32,12 +32,23 @@ Isso cria um link editável para o módulo local no ambiente virtual do reposit�
 
 A aplicação principal é estruturada como um pacote executável. O ponto de entrada está definido no arquivo `src/proj02/__main__.py`.
 
-Para executar o script principal com as dependências do workspace resolvidas, utilize o seguinte comando na raiz do repositório:
+Para gerar as chaves, execute na raiz do repositório:
 
 ```bash
-uv run python -m proj02
+uv run --no-editable python -m proj02 generate
 
 ```
+
+Para assinar um arquivo escolhido por você:
+
+```bash
+uv run --no-editable python -m proj02 sign contrato.pdf --private-key private_key.json
+```
+
+O resultado é `contrato.pdf.sig.json`. O arquivo original não é alterado.
+O JSON contém o algoritmo, hash, MGF1, comprimento do salt e a assinatura
+em Base64. Um caminho alternativo pode ser informado com `--output`.
+O comando recusa sobrescrever uma assinatura existente.
 
 ## Utilização das APIs
 

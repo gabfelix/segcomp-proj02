@@ -6,6 +6,7 @@ import hashlib
 import io
 import tempfile
 import unittest
+from dataclasses import replace
 from pathlib import Path
 
 from librsa import (
@@ -64,6 +65,8 @@ class PssTests(unittest.TestCase):
             pss_encode_digest(digest, 511)
         with self.assertRaises(ValueError):
             pss_encode_digest(digest, em_bits, salt_length=-1)
+        with self.assertRaises(ValueError):
+            pss_sign_digest(replace(self.private_key, d=1), digest)
 
     @unittest.skipIf(InvalidSignature is None, "cryptography não instalada")
     def test_interoperabilidade_e_adulteracoes(self) -> None:

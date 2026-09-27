@@ -76,6 +76,9 @@ def pss_sign_digest(
         or n <= 1
         or not isinstance(private_key.d, int)
         or private_key.d <= 0
+        or private_key.d >= n
+        or not isinstance(private_key.e, int)
+        or not 1 < private_key.e < n
     ):
         raise ValueError("chave privada RSA inválida")
 
@@ -85,6 +88,8 @@ def pss_sign_digest(
         raise ValueError("representante PSS fora do intervalo da chave")
 
     signature = pow(representative, private_key.d, n)
+    if pow(signature, private_key.e, n) != representative:
+        raise ValueError("chave privada RSA inconsistente")
     return i2osp(signature, key_byte_len(n))
 
 

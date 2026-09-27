@@ -39,3 +39,13 @@ salt aleatório por assinatura. RSA-PSS continua apropriado quando é preciso
 usar chaves RSA existentes ou interoperar com sistemas RSA, desde que os
 parâmetros de hash, MGF1 e salt sejam acordados. A especificação do Ed25519
 está na [RFC 8032](https://datatracker.ietf.org/doc/html/rfc8032#section-5.1).
+
+## Arquivo de assinatura para a Parte IV
+
+O comando `python -m proj02 sign arquivo --private-key private_key.json`
+salva um arquivo `arquivo.sig.json` com os campos `version` (1), `algorithm`
+(`RSASSA-PSS`), `hash` (`SHA3-256`), `mgf` (`MGF1-SHA3-256`),
+`salt_length` (32) e `signature` (Base64). A Parte IV deve conferir esses
+parâmetros, decodificar a assinatura, calcular o SHA3-256 do arquivo original
+e executar a verificação PSS com a chave pública. O digest não é armazenado no
+JSON: ele precisa ser recalculado a partir do arquivo que está sendo verificado.
