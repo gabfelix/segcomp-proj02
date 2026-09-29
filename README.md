@@ -50,10 +50,31 @@ O JSON contém o algoritmo, hash, MGF1, comprimento do salt e a assinatura
 em Base64. Um caminho alternativo pode ser informado com `--output`.
 O comando recusa sobrescrever uma assinatura existente.
 
-Para demonstrar todas as partes executáveis do projeto com arquivos editáveis,
-veja [`demo/README.md`](demo/README.md). Na raiz do projeto, execute
-`bash demo/rodar_demo.sh --novas-chaves`. O roteiro mostra geração de chaves, OAEP, PSS,
-verificação e os testes de adulteração.
+## Demonstração do projeto
+
+Para apresentar o fluxo completo na raiz do repositório:
+
+```bash
+bash demo/rodar_demo.sh --novas-chaves
+```
+
+O roteiro gera as chaves RSA, cifra e decifra uma mensagem curta com OAEP,
+assina um arquivo com PSS e verifica o original e versões adulteradas. Por
+padrão, usa `demo/mensagem.txt` para a cifragem e `demo/contrato.txt` para a
+assinatura. Você pode editar esses arquivos antes de executar ou escolher outros:
+
+```bash
+bash demo/rodar_demo.sh caminho/para/arquivo.pdf --mensagem caminho/para/mensagem.txt
+```
+
+`--novas-chaves` força a geração de um novo par RSA, útil para mostrar a Parte I
+ao vivo. Sem essa opção, o roteiro reutiliza as chaves já geradas; se ainda
+não houver chaves, ele as gera. `--detalhes` mostra os comandos executados,
+as respostas da aplicação e os bytes alterados. As opções podem ser combinadas.
+
+Cada execução salva seus arquivos em uma nova pasta `demo/saida/execucao.*`,
+incluindo uma cópia das chaves usadas. Esses resultados não entram no Git.
+Veja o [guia da demonstração](demo/README.md) para os passos e os testes.
 
 ## Utilização das APIs
 

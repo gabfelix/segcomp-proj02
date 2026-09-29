@@ -6,7 +6,11 @@ Na raiz do projeto, execute para mostrar também a geração de chaves ao vivo:
 bash demo/rodar_demo.sh --novas-chaves
 ```
 
-Sem `--novas-chaves`, o roteiro reutiliza o par de chaves da execução anterior.
+`--novas-chaves` gera um novo par mesmo que já exista outro em `demo/saida/chaves/`.
+Sem essa opção, o roteiro reutiliza o par existente; se ainda não houver
+chaves, ele as gera. Cada execução guarda uma cópia do par que usou, então os
+resultados antigos continuam associados às chaves corretas.
+
 A saída padrão cabe em quatro blocos para facilitar a apresentação. Se a
 professora quiser conferir os comandos executados e os bytes alterados, rode
 `bash demo/rodar_demo.sh --detalhes`.
