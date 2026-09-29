@@ -50,6 +50,11 @@ O JSON contém o algoritmo, hash, MGF1, comprimento do salt e a assinatura
 em Base64. Um caminho alternativo pode ser informado com `--output`.
 O comando recusa sobrescrever uma assinatura existente.
 
+Para demonstrar todas as partes executáveis do projeto com arquivos editáveis,
+veja [`demo/README.md`](demo/README.md). Na raiz do projeto, execute
+`bash demo/rodar_demo.sh --novas-chaves`. O roteiro mostra geração de chaves, OAEP, PSS,
+verificação e os testes de adulteração.
+
 ## Utilização das APIs
 
 Com a estrutura de workspaces configurada, as bibliotecas locais são tratadas pelo interpretador como pacotes instalados padrão. A importação obedece o escopo global da biblioteca e não exige manipulação do `sys.path`.
